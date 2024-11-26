@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 104131436}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -255,9 +255,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &104131442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1794611845}
 --- !u!114 &104131443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,10 +310,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 5
-  groundCheckDistance: 0.5
+  groundCheckDistance: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  isJumping: 0
 --- !u!1 &1003397844
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +510,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 57.741013, y: 0.09184, z: 58.625584}
+  m_LocalScale: {x: 57.741013, y: 1, z: 58.625584}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

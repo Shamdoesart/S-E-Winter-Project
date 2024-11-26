@@ -1,5 +1,6 @@
 
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,14 +10,14 @@ public class CharacterController : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
-    public float groundCheckDistance = 0.1f;
+    public float groundCheckDistance = 0.5f;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
 
     private Rigidbody rb;
     private Vector2 moveInput;
-    private bool isJumping;
+    [SerializeField]private bool isJumping;
 
     private PlayerInput inputActions;
 
@@ -53,6 +54,7 @@ public class CharacterController : MonoBehaviour
         {
             Jump();
             isJumping = false;
+            
         }
     }
 
@@ -75,6 +77,7 @@ public class CharacterController : MonoBehaviour
 
     private bool IsGrounded()
     {
+        Debug.Log(Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer));
         return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
     }
 
