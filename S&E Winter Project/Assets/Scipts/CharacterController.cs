@@ -11,6 +11,7 @@ public class CharacterController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public float groundCheckDistance = 0.5f;
+    public float rotationSpeed = 10f;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -18,6 +19,8 @@ public class CharacterController : MonoBehaviour
     private Rigidbody rb;
     private Vector2 moveInput;
     [SerializeField]private bool isJumping;
+    [Header("Camera Settings")]
+    public Transform cameraTransform;
 
     private PlayerInput inputActions;
 
@@ -60,6 +63,9 @@ public class CharacterController : MonoBehaviour
 
     private void Move()
     {
+
+
+
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         moveDirection = transform.TransformDirection(moveDirection);
         Vector3 velocity = moveDirection * moveSpeed;
