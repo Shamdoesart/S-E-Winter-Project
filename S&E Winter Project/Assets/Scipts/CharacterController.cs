@@ -1,6 +1,7 @@
 
 
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,7 @@ public class CharacterController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public float groundCheckDistance = 0.5f;
-    public float rotationSpeed = 10f;
+    public float rotationSpeed = 10f; 
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -64,13 +65,19 @@ public class CharacterController : MonoBehaviour
     private void Move()
     {
 
+        Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y).normalized;
+        if(moveDirection.magnitude>= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+        }
 
 
-        Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-        moveDirection = transform.TransformDirection(moveDirection);
         Vector3 velocity = moveDirection * moveSpeed;
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
+     
     }
 
     private void Jump()
