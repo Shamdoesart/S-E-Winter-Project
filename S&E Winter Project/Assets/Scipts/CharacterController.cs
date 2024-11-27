@@ -4,6 +4,7 @@ using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterController : MonoBehaviour
@@ -12,7 +13,9 @@ public class CharacterController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public float groundCheckDistance = 0.5f;
-    public float rotationSpeed = 10f; 
+    public float rotationSpeed = 10f;
+    public float turnSmoothTime = 0.1f;
+    public float turnSmoothVelocity;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -20,8 +23,9 @@ public class CharacterController : MonoBehaviour
     private Rigidbody rb;
     private Vector2 moveInput;
     [SerializeField]private bool isJumping;
+
     [Header("Camera Settings")]
-    public Transform cameraTransform;
+    public Transform cam;
 
     private PlayerInput inputActions;
 
@@ -68,15 +72,19 @@ public class CharacterController : MonoBehaviour
         Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y).normalized;
         if(moveDirection.magnitude>= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+            Vector3 velocity = moveDir.normalized * moveSpeed;
+            velocity.y = rb.velocity.y;
+            rb.velocity = velocity;
 
         }
 
-
-        Vector3 velocity = moveDirection * moveSpeed;
-        velocity.y = rb.velocity.y;
-        rb.velocity = velocity;
+        
      
     }
 
