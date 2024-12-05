@@ -1404,7 +1404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 5
-  groundCheckDistance: 0.1
+  groundCheckDistance: 1.5
   rotationSpeed: 10
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
