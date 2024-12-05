@@ -313,6 +313,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1707315787}
     m_Modifications:
+    - target: {fileID: 8017402628466882418, guid: 94a80f4fdd1d0884399cce4fdd1c0d5d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8017402628476229768, guid: 94a80f4fdd1d0884399cce4fdd1c0d5d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.010999918
@@ -361,7 +365,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8017402628466882418, guid: 94a80f4fdd1d0884399cce4fdd1c0d5d, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5666592611604633090, guid: 94a80f4fdd1d0884399cce4fdd1c0d5d, type: 3}
     m_AddedGameObjects: []
@@ -1377,6 +1382,7 @@ GameObject:
   - component: {fileID: 1707315785}
   - component: {fileID: 1707315784}
   - component: {fileID: 1707315783}
+  - component: {fileID: 1707315788}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1398,7 +1404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 5
-  groundCheckDistance: 0.5
+  groundCheckDistance: 0.1
   rotationSpeed: 10
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
@@ -1503,6 +1509,28 @@ Transform:
   - {fileID: 1996789894}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1707315788
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707315782}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: cb8e5f20fa704c448afceef12b4ca561, type: 3}
+  m_Controller: {fileID: 9100000, guid: eeb82ad92934776499d28a0c13545acc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1794611843
 GameObject:
   m_ObjectHideFlags: 0
